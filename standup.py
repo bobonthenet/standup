@@ -1,6 +1,16 @@
+################################################################################
+# Running this script with no arguments will use the defaults. 30 minutes of   #
+# standing and 30 minutes of sitting with random exercises before you sit.     #
+# you can also change the sit stand times by providing standing and sitting    #
+# times in seconds. The 3rd argument should be either 1 or 0 and will determine#
+# if a random exercise is chosen for you before the prompt to sit.             #
+################################################################################
+
 import ctypes
 import time
 import sys
+from random import randint
+import math
 
 def showPopup(message):
     if(sys.version_info >= (3,0)):
@@ -15,20 +25,30 @@ def intTryParse(value):
     except ValueError:
         return 1800
 
-loops = 0
-interval = [1800,1800] #defaults to 30 minutes.
+arguments = [1800,1800,1] #defaults to 30 minutes.
 i = 0
 
+randomExercise = [
+    "Do 10 squats.",
+    "Do a side bend for 10 seconds on each side.",
+    "Do a forward bend and hold for 30 seconds.",
+    "Do 10 knee lifts for each knee."
+]
+
 for timeFrame in sys.argv[1:]:
-    interval[i] = intTryParse(timeFrame)
+    arguments[i] = intTryParse(timeFrame)
     i += 1
 
-print("Press ctrl-C to stop the program early (runs about 8ish hours)")
+loops = math.floor(28800 / (arguments[0] + arguments[1]))
 
-while loops < 8:
+print("Press ctrl-C to stop the program early (About 8ish hours for a normal run time.)")
+
+while loops > 0:
     showPopup("You should stand up now.")
-    time.sleep(interval[0])
+    time.sleep(arguments[0])
+    if(arguments[2] == 1):
+        showPopup(randomExercise[randint(0,len(randomExercise)-1)])
     showPopup("Sit down now.")
-    time.sleep(interval[1])
+    time.sleep(arguments[1])
 
-    loops += 1
+    loops -= 1
