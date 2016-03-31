@@ -9,3 +9,7 @@ Running this script with no arguments will use the defaults. 30 minutes of stand
 
 ##Python version note
 I have written this script using Python 3.5.1rc1 but have attempted to make this script backwards compatible with earlier versions of Python. However, I am not testing on earlier versions so there may still be issues. If you encounter any let me know.
+
+##Workouts
+Here are some of the exercises.
+https://www.washingtonpost.com/graphics/health/workout-at-work/

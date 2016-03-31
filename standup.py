@@ -32,7 +32,15 @@ randomExercise = [
     "Do 10 squats.",
     "Do a side bend for 10 seconds on each side.",
     "Do a forward bend and hold for 30 seconds.",
-    "Do 10 knee lifts for each knee."
+    "Do 10 knee lifts for each knee.",
+    "Do raise the roof for 20 reps.",
+    "Do triceps kick for 20 reps.",
+    "Do the hulk for 20 reps.",
+    "Do hamstring curl for 20 reps.",
+    "Do side lunges 10 per side.",
+    "Do chair dips for 10 reps.",
+    "Climb at least 2 flights of stairs.",
+    "Walk for 5 minutes."
 ]
 
 for timeFrame in sys.argv[1:]:
@@ -48,6 +56,7 @@ while loops > 0:
     time.sleep(arguments[0])
     if(arguments[2] == 1):
         showPopup(randomExercise[randint(0,len(randomExercise)-1)])
+        randomExercise.remove(randomExercise[randint(0,len(randomExercise)-1)])
     showPopup("Sit down now.")
     time.sleep(arguments[1])
 
