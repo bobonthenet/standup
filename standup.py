@@ -21,7 +21,7 @@ def showPopup(message):
 
 def intTryParse(value):
     try:
-        return int(value)
+        return int(value) * 60 # Input in minutes instead of seconds.
     except ValueError:
         return 1800
 
